@@ -23,3 +23,5 @@ app.add_middleware(
 
 # include routers
 app.include_router(api_router, prefix="/api", tags=["api"])
+
+__all__ = ["app"]
