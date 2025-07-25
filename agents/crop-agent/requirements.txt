@@ -1,0 +1,27 @@
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic
+pydantic-settings
+
+# Google Cloud
+google-cloud-firestore==2.13.1
+google-cloud-pubsub==2.18.4
+google-cloud-aiplatform==1.38.1
+google-generativeai==0.3.2
+
+# HTTP client
+httpx==0.25.2
+
+# Database
+sqlalchemy==2.0.23
+asyncpg
+
+# Utilities
+python-multipart==0.0.6
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Development
+pytest==7.4.3
+pytest-asyncio==0.21.1
+httpx==0.25.2
