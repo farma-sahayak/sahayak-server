@@ -1,17 +1,18 @@
 from __future__ import annotations
 
 from google import genai
-from google.genai import types
-from PIL import Image
-from typing import TypedDict, Optional
-import google.generativeai as genai
-import google.auth
-import os
 
 # Initialize Gemini client
 client = genai.Client(
     vertexai=True, project="sahayak-ai-466508", location="global",
 )
+
+from PIL import Image
+from typing_extensions import TypedDict, Optional
+import google.generativeai as genai
+import os
+
+
 
 # Define the expected structure of the response
 class Disease(TypedDict):
@@ -45,7 +46,7 @@ def detect_disease_from_image(image_path: str) -> Optional[Disease]:
         return None
 
     # Construct prompt
-    prompt = f"""
+    prompt = """
     Analyze the following image of a crop and identify any diseases or health issues.
 
     Respond in JSON with:

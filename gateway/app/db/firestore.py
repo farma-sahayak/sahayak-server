@@ -2,13 +2,12 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 from typing import List, Dict, Any
 from datetime import date
-import json
 import os
 
 # Initialize Firebase Admin SDK
 try:
     # Try to get the service account path from environment variable
-    service_account_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+    service_account_path = os.getenv('FIRESTORE_CREDS')
     
     if not service_account_path:
         # Fallback to common paths - check both local and container paths

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "sahayak-ai-466508",
+  "private_key_id": "fae163a16ced5af8a01d7e06e3da828e9f1fd623",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCdPwZvc6P/yVih\nmFOb6ZLi5ZFhTTtgvwBHUm2OGBEzwvkgJFK71Ff9o1RXjCczg8b8XApzEyzBJjQ7\nt9i8vQO40ybk08PzOn57i7Z/DSWdBtmD9m9hQHnGmymJzKUXlXCCTvKhQODQ6RFb\nkOw9bKDkztlxbpLGaqLXmIfq9igJxj2d01aSnGHkOtrDsDfca6BGjp2eEm8sZgTF\nNAThLHavfZWYxyIarGclH0hnguyuSx5vCSxIvoIojZNQnTpNaoQlIRfCmszqviiW\nCvXFARZu5Z5u63ZU7v+CKaDkVi2Yg92TeGSyLXCH8HpAG3I2cx5qNiTuAr8Q/UKS\nSKZSNctnAgMBAAECggEADq9qofD6UXKT4O+Ra1+qdJ887wnf8D6WP5LuoVUVEjD0\nxDAwO9NubkUZJN31cUWuyTWtUibpyJYRTbxzNNkwJkwt9zPhum7tjgszvXTUXPBd\nUwoqR7pWRRqLjA99IZE2wyytUyr0c/44PUVxEqF4+zVoMERD19zwnVLk6qgXgCYK\nbxWNXFi9WxJmAsjIgaa/bQZeL5xcNwoypLH4GPxk5ZUXUT+gjKI2bzDeQs6vasvJ\n6qehir4UOeqPtB8OsGP67+5bCS2e135isJXUOeDbiSK/KXrWgr3gPR8Ub21a0vIT\nBNrI87hGt+7zZ+Qsjif1U9pwOo/jojVmdU5Mj+BPLQKBgQDPajyYwfX0FOpYl4Da\nQHvAJETG8TP5v1RNgR2FXmCzdwAfBQnOvkxnotqcS/l0Pot9hMP+Uo8J/4HiBr2c\n/Rvnm0nGVS4p0rTXhfvEjAE/Y9u3vZzRuY3QY4bpfdq4ujdVz3vx69ifjtmGKw6I\nGtcKSx+MuqoOOBex1EnwW7DpLQKBgQDCFGMBE5bnHW+fwd7Lna7fqZXZhTcjczNQ\n4PmVaLemHDyYIPg0gLYdxkQGp6iUgMNtCBHZmkQsxJuc7qjZtqu0MfN4AtfxSLaO\nEXBXscqOdAhcrRUsb4d0zY/vEkCN2OL7dgeKXWDy2ATD/PnSpnPiRZ7SC/uOO0ri\nK4c3s697YwKBgQDMiPPWo7aaCqIJ2OUM1Hf0Qw+7qxHZH67PexqUcTwk3Z21+S7x\nvED2FedEJ7uHwUGm9myb9+fsMRVwwbrr+8EvxLecqFUMkycYPZzH9lQooZ2C9K2X\nN0a8j9jzmdM9RQzaRu/v4eZNef3Ry9XZq7YRBYHIMi8ONIxRJYoARzsOxQKBgQCA\nuyEIP8QiPEYkA2YSTN8Hf+bjRxdRrkHlbbRew/y8c5JFnejEenNRwIaym1aYWehG\nU8nzOf3qa+aD61GYRzAQ7+j8O3acloxwI2UO5eDjKFe7kRqwRLHmacsE2mhzLd8w\nyBMsVc/OhDZ1AUF71eibt24nCMesieubpR+ldMv63QKBgQCrrt6YSbQx+R9wgG1y\nzTqJ3Skv+AcAWZ2GllNf5qm1WveWp6heY5p8REd5t0fyPEaVvm7gqnwVCAXf4A5L\nox2WvmixXabXemXCMc53Knz4upl+JI+iOl1N+qURQ0jmT2yPOYLyrG3icOXDplsp\n87ivCczi+UYwmtBoqlnsf5RlkA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "farmer-text@sahayak-ai-466508.iam.gserviceaccount.com",
+  "client_id": "111292498499251404009",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/farmer-text%40sahayak-ai-466508.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

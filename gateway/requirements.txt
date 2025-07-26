@@ -12,6 +12,7 @@ jose
 psycopg2-binary
 google-cloud-aiplatform
 google-generativeai
+pillow
 
 # Google Cloud & Firebase
 google-cloud-firestore==2.13.1
@@ -19,6 +20,7 @@ google-cloud-speech==2.23.0
 google-cloud-texttospeech==2.16.4
 google-cloud-vision==3.4.5
 google-ai-generativelanguage==0.4.0
+google-generativeai
 firebase-admin==6.2.0
 
 # HTTP & API

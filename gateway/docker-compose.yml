@@ -33,7 +33,7 @@ services:
     env_file:
       - .env
     environment:
-      GOOGLE_APPLICATION_CREDENTIALS: /app/service-account-key.json
+      GOOGLE_APPLICATION_CREDENTIALS: .keys/service-account-key.json
     volumes:
       - .:/app
 

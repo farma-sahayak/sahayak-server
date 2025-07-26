@@ -5,7 +5,6 @@ import os
 import uuid
 from datetime import datetime
 import base64
-from io import BytesIO
 
 router = APIRouter()
 
