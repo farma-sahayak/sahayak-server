@@ -2,7 +2,7 @@ import re
 from pydantic import BaseModel, field_validator, Field
 
 class AuthRequest(BaseModel):
-    phone_number: str = Field(..., alias="phoneNumber")
+    phone_number: str = Field(...)
     mpin: int = Field(..., ge=100000, le=999999) # 6 digit int
 
     @field_validator('phone_number')
@@ -13,8 +13,8 @@ class AuthRequest(BaseModel):
         return v.replace(" ", "").replace("-", "")
 
 class AuthResponse(BaseModel):
-    access_token: str = Field(..., alias="accessToken")
-    refresh_token: str = Field(..., alias="refreshToken")
+    access_token: str = Field(...)
+    refresh_token: str = Field(...)
     pass
 
 class RefreshTokenRequest(BaseModel):

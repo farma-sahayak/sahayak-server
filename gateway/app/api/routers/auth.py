@@ -22,7 +22,11 @@ async def signup(request: AuthRequest, db: Session = Depends(get_db)):
     """ Signup endpoint """
     try:
         from app.services.auth import signup_user
-        return signup_user(request, db)
+        auth_response = signup_user(request, db)
+        return JSONResponse(
+            status_code=status.HTTP_201_CREATED,
+            content=auth_response.dict()
+        )
     except ValueError as e:
         return JSONResponse(
             status_code=status.HTTP_400_BAD_REQUEST,

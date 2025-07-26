@@ -21,8 +21,8 @@ def signup_user(payload: AuthRequest, db: Session):
     payload = {"user_id" : user.index}
 
     return AuthResponse(
-        accessToken=create_access_token(payload),
-        refreshToken=create_refresh_token(payload)
+        access_token=create_access_token(payload),
+        refresh_token=create_refresh_token(payload)
     )
 
 def login_user(payload: AuthRequest, db: Session) -> AuthResponse:
@@ -37,8 +37,8 @@ def login_user(payload: AuthRequest, db: Session) -> AuthResponse:
         'user_id': existing_user.index
     }
     return AuthResponse(
-        accessToken=create_access_token(payload),
-        refreshToken=create_refresh_token(payload)
+        access_token=create_access_token(payload),
+        refresh_token=create_refresh_token(payload)
     )
 
 def logout_user(refresh_token: str, current_user_id: int, db: Session):
@@ -70,8 +70,8 @@ def refresh_token(refresh_token: str, db: Session):
         payload = {"user_id": existing_user.index}
 
         return AuthResponse(
-            accessToken=create_access_token(payload),
-            refreshToken=create_refresh_token(payload)
+            access_token=create_access_token(payload),
+            refresh_token=create_refresh_token(payload)
         )
     except Exception as ex:
         raise ValueError(f"refresh token validation failed with {ex}")
