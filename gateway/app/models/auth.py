@@ -18,5 +18,5 @@ class AuthResponse(BaseModel):
     pass
 
 class RefreshTokenRequest(BaseModel):
-    refresh_token: str = Field(..., alias="refreshToken")
+    refresh_token: str = Field(...)
     pass
