@@ -27,22 +27,43 @@ def create_farmer_profile(
             content={"message": f"Failed to create farmer profile: {e}"}
         )
 
-@router.get("/{farmer_id}", response_model=FarmerProfileRead)
-def get_farmer_profile(farmer_id: UUID, db: Session = Depends(get_db)):
+@router.get("/{farmer_id}")
+def get_farmer_profile(farmer_id: UUID, db: Session = Depends(get_db), user_id: int = Depends(get_current_user_id)):
     try:
         from app.services.farmer import FarmerService
-        profile = FarmerService.get_farmer_profile(db, farmer_id)
-        return JSONResponse(content=profile.dict())
-    except HTTPException as e:
-        raise JSONResponse(status_code=e.status_code, detail=f"failed with exception: {str(e)}")
+        profile = FarmerService.get_farmer_profile(db, farmer_id, user_id)
+        return JSONResponse(content={
+            "farmer_id": str(profile.farmer_id),
+            "user_id": profile.user_id,
+            "name": profile.name,
+            "district": profile.district,
+            "state": profile.state,
+            "preferred_language": profile.preferred_language,
+            "primary_crop": profile.primary_crop,
+        })
+    except Exception as e:
+        raise JSONResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, content={
+            "message": f"failed with exception: {str(e)}"})
 
-@router.put("/{farmer_id}", response_model=FarmerProfileRead)
-def update_farmer_profile(farmer_id: UUID, profile_in: FarmerProfileUpdate, db: Session = Depends(get_db)):
+@router.put("/{farmer_id}")
+def update_farmer_profile(
+    farmer_id: UUID, 
+    profile_in: FarmerProfileUpdate, 
+    db: Session = Depends(get_db),
+    user_id: int = Depends(get_current_user_id)
+    ):
     try:
         from app.services.farmer import FarmerService
         profile = FarmerService.update_farmer_profile(db, farmer_id, profile_in)
-        return JSONResponse(content=profile.dict())
-    except HTTPException as e:
-        raise JSONResponse(status_code=e.status_code, detail=f"failed with exception: {str(e)}")
+        return JSONResponse(content={
+            "farmer_id": str(profile.farmer_id),
+            "user_id": profile.user_id,
+            "name": profile.name,
+            "district": profile.district,
+            "state": profile.state,
+            "preferred_language": profile.preferred_language,
+            "primary_crop": profile.primary_crop,
+        })
     except Exception as e:
-        raise JSONResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"failed with exception: {str(e)}")
+        raise JSONResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, content={
+            "message": f"failed with exception: {str(e)}"})

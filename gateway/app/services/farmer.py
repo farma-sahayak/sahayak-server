@@ -39,26 +39,29 @@ class FarmerService:
 
     @staticmethod
     def update_farmer_profile(db: Session, farmer_id: uuid.UUID, profile_in: FarmerProfileUpdate) -> FarmerProfile:
-        profile = db.query(FarmerProfile).filter(FarmerProfile.farmer_id == farmer_id).first()
-        if not profile:
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail="Farmer profile not found"
-            )
+        try:
+            profile = db.query(FarmerProfile).filter(FarmerProfile.farmer_id == farmer_id).first()
+            if not profile:
+                raise HTTPException(
+                    status_code=status.HTTP_404_NOT_FOUND,
+                    detail="Farmer profile not found"
+                )
 
-        for key, value in profile_in.dict(exclude_unset=True).items():
-            setattr(profile, key, value)
+            for key, value in profile_in.dict(exclude_unset=True).items():
+                setattr(profile, key, value)
 
-        db.commit()
-        db.refresh(profile)
-        return profile
+            db.commit()
+            db.refresh(profile)
+            return profile
+        except Exception as ex:
+            raise ValueError(f"failed to update farmer profile with {ex}")
 
     @staticmethod
-    def get_farmer_profile(db: Session, farmer_id: uuid.UUID) -> FarmerProfile:
-        profile = db.query(FarmerProfile).filter(FarmerProfile.farmer_id == farmer_id).first()
-        if not profile:
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail="Farmer profile not found"
-            )
-        return profile
+    def get_farmer_profile(db: Session, farmer_id: uuid.UUID, user_id: int) -> FarmerProfile:
+        try:
+            profile = db.query(FarmerProfile).filter(FarmerProfile.farmer_id == farmer_id).first()
+            if not profile:
+                raise ValueError("no matching profile found")
+            return profile
+        except Exception as ex:
+            raise ValueError(f"failed to fetch farmer profile with: {ex}")
