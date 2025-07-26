@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from app.models.auth import AuthRequest, AuthResponse
 from app.db.models.user import User
 from app.utils.security import hash_mpin, create_access_token, create_refresh_token, decode_token
+from app.middleware.auth import get_current_user_id
 
 def signup_user(payload: AuthRequest, db: Session):
     """ sign up user and upon sucess, return pair of access and refresh tokens """
@@ -77,11 +78,13 @@ def refresh_token(refresh_token: str, db: Session):
         raise ValueError(f"refresh token validation failed with {ex}")
     pass
 
-def validate_token(access_token: str):
+def validate_token(access_token: str, db: Session):
     try:
-        payload = decode_token(access_token)
-        if payload:
-            return True
+        user_id = get_current_user_id(authorization=access_token)
+        # check if user exists
+        existing_user = db.query(User).filter_by(index=user_id).first()
+        if not existing_user:
+            return False
         return False
     except Exception as e:
         print(f"failed with exception {e}")

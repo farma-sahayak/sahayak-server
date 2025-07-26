@@ -88,13 +88,13 @@ async def refresh_token(request: RefreshTokenRequest, db: Session = Depends(get_
 
 # validate token -> check if the accessToken is valid or not
 @router.get("/validate-token")
-async def validate_token(access_token: str = Depends(get_access_token)):
+async def validate_token(access_token: str = Depends(get_access_token), db: Session = Depends(get_db)):
     """
     Validates access token
     """
     try:
         from app.services.auth import validate_token
-        if validate_token(access_token):
+        if validate_token(access_token, db):
             return Response(status_code=status.HTTP_200_OK)
         return Response(status_code=status.HTTP_401_UNAUTHORIZED)
     
