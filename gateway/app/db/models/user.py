@@ -6,7 +6,7 @@ class User(Base):
     """ User model for the sahayak ai application """
     __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True, index=True)
+    index = Column(Integer, primary_key=True, index=True)
     phone_number = Column(String(14), unique=True, index=True, nullable=False)
     mpin_hash = Column(String, nullable=False)
     pass

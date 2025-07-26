@@ -16,13 +16,13 @@ def verify_mpin(plain_mpin: int, hashed: str) -> bool:
 def create_access_token(data: dict) -> str:
     to_encode = data.copy()
     expire = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(minutes=float(config.JWT_ACCESS_TOKEN_EXPIRE_MINUTES))
-    to_encode.update({"exp": expire})
+    to_encode.update({"expire": expire.isoformat()})
     return jwt.encode(to_encode, config.JWT_SECRET_KEY, algorithm=config.JWT_ALGORITHM)
 
 def create_refresh_token(data: dict) -> str:
     to_encode = data.copy()
     expire = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=float(config.JWT_REFRESH_TOKEN_EXPIRE_DAYS))
-    to_encode.update({"exp": expire})
+    to_encode.update({"expire": expire.isoformat()})
     return jwt.encode(to_encode, config.JWT_SECRET_KEY, algorithm=config.JWT_ALGORITHM)
 
 def decode_token(token: str):
