@@ -2,11 +2,16 @@ fastapi==0.104.1
 uvicorn[standard]==0.24.0
 pydantic
 python-multipart==0.0.6
+aiohttp
+google-cloud-firestore
+google-cloud-bigquery
 alembic
 sqlalchemy
 passlib
 jose
 psycopg2-binary
+google-cloud-aiplatform
+google-generativeai
 
 # Google Cloud & Firebase
 google-cloud-firestore==2.13.1
