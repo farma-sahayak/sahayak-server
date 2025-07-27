@@ -21,8 +21,12 @@ async def health_check():
 async def signup(request: AuthRequest, db: Session = Depends(get_db)):
     """ Signup endpoint """
     try:
-        from gateway.app.services.auth import signup_user
-        return signup_user(request, db)
+        from app.services.auth import signup_user
+        auth_response = signup_user(request, db)
+        return JSONResponse(
+            status_code=status.HTTP_201_CREATED,
+            content=auth_response.dict()
+        )
     except ValueError as e:
         return JSONResponse(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -84,13 +88,13 @@ async def refresh_token(request: RefreshTokenRequest, db: Session = Depends(get_
 
 # validate token -> check if the accessToken is valid or not
 @router.get("/validate-token")
-async def validate_token(access_token: str = Depends(get_access_token)):
+async def validate_token(access_token: str = Depends(get_access_token), db: Session = Depends(get_db)):
     """
     Validates access token
     """
     try:
-        from gateway.app.services.auth import validate_token
-        if validate_token(access_token):
+        from app.services.auth import validate_token
+        if validate_token(access_token, db):
             return Response(status_code=status.HTTP_200_OK)
         return Response(status_code=status.HTTP_401_UNAUTHORIZED)
     
