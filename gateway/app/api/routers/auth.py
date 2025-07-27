@@ -39,7 +39,7 @@ async def signup(request: AuthRequest, db: Session = Depends(get_db)):
 async def login(request: AuthRequest, db: Session = Depends(get_db)):
     """ Log in endpoint """
     try:
-        from app.services.auth import login_user
+        from gateway.app.services.auth import login_user
         return login_user(request, db)
     except ValueError as ex:
         return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content={
@@ -53,7 +53,7 @@ async def logout(request: RefreshTokenRequest, current_user_id: int = Depends(ge
     refresh token comes in body, access token comes in header
     """
     try:
-        from app.services.auth import logout_user
+        from gateway.app.services.auth import logout_user
         if logout_user(request.refresh_token, current_user_id, db):
             return Response(status_code=status.HTTP_200_OK)
         return JSONResponse(
@@ -76,7 +76,7 @@ async def logout(request: RefreshTokenRequest, current_user_id: int = Depends(ge
 async def refresh_token(request: RefreshTokenRequest, db: Session = Depends(get_db)):
     """ Refresh token pairs from the refreshToken """
     try:
-        from app.services.auth import refresh_token
+        from gateway.app.services.auth import refresh_token
         return refresh_token(request.refresh_token, db=db)
     except Exception as ex:
         return JSONResponse(
